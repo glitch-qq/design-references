@@ -176,6 +176,7 @@ a:hover::after {
   flex-wrap: wrap;
 
   gap: 8px;
+  padding: 20px 0;
 }
 
 .blocks-nav a {

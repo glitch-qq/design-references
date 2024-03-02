@@ -9,6 +9,9 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger)
+  </script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -16,17 +19,281 @@
   <link rel="stylesheet" href="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.css">
   <script src="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.js"></script>
 
-  <link rel="stylesheet" href="https://unpkg.com/accordion-js@3.3.4/dist/accordion.min.css">
-  <script src="https://unpkg.com/accordion-js@3.3.4/dist/accordion.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
 </head>
 
 <body>
   <div class="wrapper">
-    
+
+    <div class="animation text-mask">
+      <div class="container">
+
+        <p class="paragraph">
+          <span class="top"><span class="mask">We are MONOLIF — We specialise in</span></span>
+          <span class="top"><span class="mask">designing & building custom websites that</span></span>
+          <span class="top"><span class="mask">propel startups online promptly, effortlessly,</span></span>
+          <span class="top"><span class="mask">and with sophistication.</span></span>
+        </p>
+
+        <p class="paragraph">
+          <span class="top"><span class="mask">Guided by your objectives and our creative</span></span>
+          <span class="top"><span class="mask">curiosity, we create an online presence</span></span>
+          <span class="top"><span class="mask">that's one-of-a-kind, memorable, and a</span></span>
+          <span class="top"><span class="mask">testament to your innovative ethos.</span></span>
+        </p>
+
+      </div>
+      <style>
+        .text-mask .container {
+          display: flex;
+          flex-direction: column;
+
+          padding: 40px 0;
+          max-width: 440px;
+          margin: 0 auto;
+
+          gap: 50px;
+        }
+
+        .text-mask .paragraph {
+          color: #fff;
+        }
+
+        .text-mask .paragraph span {}
+
+        .text-mask .top {
+          display: block;
+          overflow: hidden;
+        }
+
+        .text-mask .mask {
+          display: block;
+          transform: translateY(120%);
+        }
+      </style>
+      <script>
+        const textElement = document.querySelectorAll('.text-mask .paragraph')
+
+        gsap.to('.text-mask .paragraph .mask', {
+          scrollTrigger: {
+            trigger: '.text-mask .paragraph'
+          },
+          stagger: 0.2,
+          y: 0,
+        })
+      </script>
+    </div>
+
+    <div class="animation img-reveal">
+      <div class="container">
+        <div class="img-wrapper">
+          <img src="https://source.unsplash.com/random/400x400" alt="">
+        </div>
+        <div class="img-wrapper">
+          <img src="https://source.unsplash.com/random/400x400" alt="">
+        </div>
+      </div>
+      <style>
+        .img-reveal {
+          padding: 40px 0;
+        }
+
+        .img-reveal .container {
+          display: flex;
+          justify-content: center;
+
+          gap: 20px;
+        }
+
+        .img-reveal .img-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+        }
+
+        .img-reveal .img-wrapper img {
+          max-width: 100%;
+        }
+
+        .img-reveal .overlay {
+          display: flex;
+          position: absolute;
+          right: 0;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          z-index: 1;
+        }
+
+        .img-reveal .element {
+          flex: 1 1 auto;
+          overflow: hidden;
+        }
+
+        .img-reveal .element .element-background {
+          width: 100%;
+          height: 100%;
+          transform: translateX(0);
+          background-color: var(--color-700);
+        }
+      </style>
+      <script>
+        const imgWrappers = document.querySelectorAll('.img-reveal .img-wrapper')
+        const imgList = document.querySelectorAll('.img-reveal .img-wrapper img')
+
+        imgList.forEach(
+          (img, index) => {
+            img.addEventListener('load', (e) => {
+              const overlayElementCount = 4
+              const imgWrapper = imgWrappers[index]
+              const overlayWrapper = document.createElement('div')
+              overlayWrapper.className = 'overlay'
+              for (let i = 0, len = overlayElementCount; i < len; i++) {
+                const overlayElement = document.createElement('div')
+                overlayElement.className = 'element'
+                overlayWrapper.appendChild(overlayElement)
+
+                const overlayElementBackground = document.createElement('div')
+                overlayElementBackground.className = 'element-background'
+                overlayElement.appendChild(overlayElementBackground)
+
+              }
+              imgWrapper.appendChild(overlayWrapper)
+              gsap.to('.img-reveal .element .element-background', {
+                duration: 2,
+                stagger: 0.2,
+                x: '-120%'
+              })
+            })
+          }
+        )
+      </script>
+    </div>
+
+    <div class="animation fence">
+      <div class="container">
+        <div class="element"></div>
+        <div class="element"></div>
+        <div class="element"></div>
+        <div class="element"></div>
+        <div class="element"></div>
+      </div>
+      <style>
+        .fence {
+          height: 100vh;
+        }
+
+        .fence .container {
+          display: flex;
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .fence .element {
+          transform: translateY(100%);
+          flex: 1 1 auto;
+          border-right: 1px solid rgba(255, 255, 255, 0.209);
+          background-color: #313131;
+        }
+
+        .fence .element:last-child {
+          border-right: none;
+        }
+      </style>
+      <script>
+        gsap.to('.fence .element', {
+          scrollTrigger: {
+            trigger: '.fence',
+          },
+          y: 0,
+          duration: 2,
+          stagger: 0.5,
+        })
+      </script>
+    </div>
+
+    <div class="animation parallax">
+      <div class="container">
+        <img class="thumbnail" src="https://source.unsplash.com/random/400x800" alt="image">
+      </div>
+      <style>
+        .parallax {
+          padding: 40px 0;
+          height: 100vh;
+        }
+
+        .parallax .container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          height: 100%;
+          overflow: hidden;
+        }
+      </style>
+      <script>
+        const images = document.querySelectorAll('.parallax .container img');
+        new simpleParallax(images);
+      </script>
+    </div>
+
+    <div class="animation mouse-parallax">
+      <div class="container scene">
+        <img data-depth="0.5" class="thumbnail" src="https://source.unsplash.com/random/100x100" alt="image">
+      </div>
+      <style>
+        .mouse-parallax {
+          height: 100vh;
+        }
+
+        .mouse-parallax .container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          height: 100%;
+          width: 100%;
+        }
+      </style>
+      <script>
+        const scene = document.querySelector('.scene');
+        const parallaxInstance = new Parallax(scene, {
+          invertX: false,
+          invertY: false,
+        });
+      </script>
+    </div>
+
+    <div class="animation mouse-follower">
+      <div class="container">
+        
+      </div>
+      <style>
+        .mouse-follower .container{
+          height: 50vh;
+          background-color: #3b3b3b;
+          border-radius: 24px;
+        }
+      </style>
+      <script>
+        MouseFollower.registerGSAP(gsap);
+
+        const cursor = new MouseFollower({
+          container: '.mouse-follower .container',
+          speed: 0.7
+        });
+      </script>
+    </div>
+
     <div class="animation">
       <div class="container"></div>
       <style></style>
-      <script></script>
+      <script>
+      </script>
     </div>
 
   </div>
