@@ -1,0 +1,191 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+  --color-100: #fff;
+  --color-200: #cccccc;
+  --color-300: #9a9a9a;
+  --color-400: #9d9d9d;
+  --color-500: #898989;
+  --color-600: #4e4e4e;
+  --color-700: #1b1b1b;
+  --color-800: #070707;
+  --color-900: #000;
+}
+
+body {
+  font-family: "Montserrat";
+  background-color: var(--color-700);
+}
+
+.wrapper {
+  padding: 0 15px;
+}
+
+a {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 4px;
+
+  color: var(--color-300);
+  text-decoration: none;
+}
+a::after {
+  content: "";
+  width: 16px;
+  height: 8px;
+
+  flex-shrink: 0;
+
+  background: url('data:image/svg+xml,<svg height="24px" width="24px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve"><path fill="%239a9a9a" d="M15.563,40.836c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293l15-15c0.391-0.391,0.391-1.023,0-1.414l-15-15c-0.391-0.391-1.023-0.391-1.414,0s-0.391,1.023,0,1.414l14.293,14.293L15.563,39.422C15.172,39.813,15.172,40.446,15.563,40.836z"/></svg>')
+    center right repeat-x;
+  transition: transform 0.2s linear;
+}
+
+a:hover::after {
+  transform: translateX(3px);
+}
+
+.blocks-nav {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.blocks-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 10px;
+
+  border-radius: 12px;
+  background-color: var(--color-900);
+  color: var(--color-100);
+}
